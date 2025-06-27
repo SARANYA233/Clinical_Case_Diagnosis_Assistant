@@ -1,0 +1,12 @@
+__pycache__/
+Documentation/
+.env
+setup.py 
+Errors.py 
+.streamlit/
+dataset/
+*.pkl
+*copy.py
+*copy 2.py
+logs/
+*dataset/

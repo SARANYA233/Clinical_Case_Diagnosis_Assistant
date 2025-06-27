@@ -1,0 +1,14 @@
+setuptools
+ipykernel
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+python-dotenv
+langchain_groq
+langchain_core
+streamlit
+gdown
+
+#-e .
