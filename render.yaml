@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: clinical-diagnosis-assistant
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run app.py
+    envVars:
+      - key: GROQ_API_KEY
+        value: "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"   # Or use Render's Dashboard to keep it secret
