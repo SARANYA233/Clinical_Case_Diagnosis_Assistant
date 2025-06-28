@@ -7,7 +7,7 @@ import sys
 import os
 import gdown
 import pickle
-
+import streamlit as st
 load_dotenv()
 
 # RF_MODEL = "1O33vbPu10sDn3tXHviz9XaS0kAnZK4tc"
@@ -48,5 +48,8 @@ def predict_disease(user_input, top_k = 3):
         return diseases, symptoms
     
     except Exception as e:
+        st.error(f"Error during prediction: {str(e)}")
+        import traceback
+        st.code(traceback.format_exc())
         raise CustomException(e, sys)
     

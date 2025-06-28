@@ -7,6 +7,7 @@ import joblib
 from src.exception import CustomException
 import sys
 import pickle
+import streamlit as st
 
 load_dotenv()
 
@@ -43,7 +44,11 @@ def map_symptoms_groq(user_input):
         result = [symptom.replace('\n', '').strip() for symptom in extracted_symptoms if symptom.replace('\n', '').strip() in SYMPTOM_COLUMNS]
         return result
     except Exception as e:
+        st.error(f"Error during prediction: {str(e)}")
+        import traceback
+        st.code(traceback.format_exc())
         raise CustomException(e, sys)
+    
 
 def map_symptoms_local():
     pass
