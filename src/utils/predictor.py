@@ -13,8 +13,8 @@ load_dotenv()
 # RF_MODEL = "1O33vbPu10sDn3tXHviz9XaS0kAnZK4tc"
 # SYMPTOM_COLUMNS = "1E_Vu_Dw5lBLhSqsfbdP2xqaVH88A68nd"
 
-MODEL_PATH = "models/random_forest_disease_prediction_model.pkl"
-COLUMNS_PATH = "models/symptom_columns.pkl"
+MODEL_PATH = "./models/random_forest_disease_prediction_model.pkl"
+COLUMNS_PATH = "./models/symptom_columns.pkl"
 
 # def download_model():
 #     if not os.path.exists("models"):
