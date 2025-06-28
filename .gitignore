@@ -5,7 +5,6 @@ setup.py
 Errors.py 
 .streamlit/
 dataset/
-*.pkl
 *copy.py
 *copy 2.py
 logs/
