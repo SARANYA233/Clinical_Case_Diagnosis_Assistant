@@ -10,17 +10,17 @@ import pickle
 
 load_dotenv()
 
-RF_MODEL = "1O33vbPu10sDn3tXHviz9XaS0kAnZK4tc"
-SYMPTOM_COLUMNS = "1E_Vu_Dw5lBLhSqsfbdP2xqaVH88A68nd"
+# RF_MODEL = "1O33vbPu10sDn3tXHviz9XaS0kAnZK4tc"
+# SYMPTOM_COLUMNS = "1E_Vu_Dw5lBLhSqsfbdP2xqaVH88A68nd"
 
-MODEL_PATH = "models/symptom_model.pkl"
+MODEL_PATH = "models/random_forest_disease_prediction_model.pkl"
 COLUMNS_PATH = "models/symptom_columns.pkl"
 
 def download_model():
     if not os.path.exists("models"):
         os.makedirs("models")
-    if not os.path.exists(MODEL_PATH):
-        gdown.download(f"https://drive.google.com/uc?id={RF_MODEL}", MODEL_PATH, quiet=False)
+    # if not os.path.exists(MODEL_PATH):
+    #     gdown.download(f"https://drive.google.com/uc?id={RF_MODEL}", MODEL_PATH, quiet=False)
     # if not os.path.exists(COLUMNS_PATH):
     #     gdown.download(f"https://drive.google.com/uc?id={SYMPTOM_COLUMNS}", COLUMNS_PATH, quiet=False)
 
