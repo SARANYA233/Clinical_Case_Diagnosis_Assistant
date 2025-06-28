@@ -35,9 +35,9 @@ def download_model():
 def load_model():
     download_model()
     with open(MODEL_PATH, "rb") as f:
-        model = pickle.load(f)
+        model = joblib.load(f)
     with open(COLUMNS_PATH, "rb") as f:
-        columns = pickle.load(f)
+        columns = joblib.load(f)
     return model, columns
 
 def predict_disease(user_input, top_k = 3):

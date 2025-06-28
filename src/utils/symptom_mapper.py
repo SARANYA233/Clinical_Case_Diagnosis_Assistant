@@ -27,7 +27,7 @@ session = requests.Session()
 response = session.get(URL, params={'id': SYMPTOM_COLUMNS}, stream=True)
 
 with open(COLUMNS_PATH, "rb") as f:
-    SYMPTOM_COLUMNS = pickle.load(f)
+    SYMPTOM_COLUMNS = joblib.load(f)
 
 def map_symptoms_groq(user_input):
     try:
@@ -62,9 +62,3 @@ def map_symptoms_groq(user_input):
 
 def map_symptoms_local():
     pass
-
-if __name__ == "__main__":
-    test_input = "I feel a tight pressure in my chest, trouble sleeping, and dizziness when I stand up."
-
-    result = map_symptoms_groq(test_input)
-    print("Matched Symptoms:", result)
