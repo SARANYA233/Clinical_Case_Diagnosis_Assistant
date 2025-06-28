@@ -28,8 +28,8 @@ if not os.path.exists(COLUMNS_PATH):
     session = requests.Session()
     response = session.get(URL, params={'id': SYMPTOM_COLUMNS}, stream=True)
 
-with open(COLUMNS_PATH, "rb") as f:
-    SYMPTOM_COLUMNS = joblib.load(f)
+    with open(COLUMNS_PATH, "rb") as f:
+        SYMPTOM_COLUMNS = joblib.load(f)
 
 def map_symptoms_groq(user_input):
     try:
