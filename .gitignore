@@ -3,7 +3,6 @@ Documentation/
 .env
 setup.py 
 Errors.py 
-.streamlit/
 dataset/
 *copy.py
 *copy 2.py
