@@ -6,12 +6,16 @@ import os
 import joblib
 from src.exception import CustomException
 import sys
+import pickle
 
 load_dotenv()
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 MODEL = ChatGroq(model="Gemma2-9b-It", groq_api_key=GROQ_API_KEY)
-SYMPTOM_COLUMNS = joblib.load("D:/PROJECTS/Clinical_Case_Diagnosis_Assistant/models/symptom_columns.pkl")
+# SYMPTOM_COLUMNS = joblib.load("D:/PROJECTS/Clinical_Case_Diagnosis_Assistant/models/symptom_columns.pkl")
+COLUMNS_PATH = "models/symptom_columns.pkl"
+with open(COLUMNS_PATH, "rb") as f:
+    SYMPTOM_COLUMNS = pickle.load(f)
 
 def map_symptoms_groq(user_input):
     try:
