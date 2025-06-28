@@ -21,10 +21,12 @@ if not os.path.exists("models"):
     os.makedirs("models")
 # if not os.path.exists(COLUMNS_PATH):
 #     gdown.download(f"https://drive.google.com/uc?id={SYMPTOM_COLUMNS}", COLUMNS_PATH, quiet=False) 
+# /(URL, params={'id': SYMPTOM_COLUMNS}, stream=True)
 
-URL = "https://drive.google.com/uc?export=download"
-session = requests.Session()
-response = session.get(URL, params={'id': SYMPTOM_COLUMNS}, stream=True)
+if not os.path.exists(COLUMNS_PATH):
+    URL = "https://drive.google.com/uc?export=download"
+    session = requests.Session()
+    response = session.get(URL, params={'id': SYMPTOM_COLUMNS}, stream=True)
 
 with open(COLUMNS_PATH, "rb") as f:
     SYMPTOM_COLUMNS = joblib.load(f)
