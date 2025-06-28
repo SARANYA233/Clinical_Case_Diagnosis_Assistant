@@ -8,6 +8,7 @@ from src.exception import CustomException
 import sys
 import pickle
 import gdown
+import requests
 
 load_dotenv()
 
@@ -18,8 +19,12 @@ COLUMNS_PATH = "models/symptom_columns.pkl"
 SYMPTOM_COLUMNS = "1E_Vu_Dw5lBLhSqsfbdP2xqaVH88A68nd"
 if not os.path.exists("models"):
     os.makedirs("models")
-if not os.path.exists(COLUMNS_PATH):
-    gdown.download(f"https://drive.google.com/uc?id={SYMPTOM_COLUMNS}", COLUMNS_PATH, quiet=False)
+# if not os.path.exists(COLUMNS_PATH):
+#     gdown.download(f"https://drive.google.com/uc?id={SYMPTOM_COLUMNS}", COLUMNS_PATH, quiet=False) 
+
+URL = "https://drive.google.com/uc?export=download"
+session = requests.Session()
+response = session.get(URL, params={'id': SYMPTOM_COLUMNS}, stream=True)
 
 with open(COLUMNS_PATH, "rb") as f:
     SYMPTOM_COLUMNS = pickle.load(f)
