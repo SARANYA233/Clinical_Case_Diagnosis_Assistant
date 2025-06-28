@@ -6,30 +6,12 @@ import os
 import joblib
 from src.exception import CustomException
 import sys
-import pickle
-import gdown
-import requests
 
 load_dotenv()
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 MODEL = ChatGroq(model="Gemma2-9b-It", groq_api_key=GROQ_API_KEY)
-# SYMPTOM_COLUMNS = joblib.load("D:/PROJECTS/Clinical_Case_Diagnosis_Assistant/models/symptom_columns.pkl")
-COLUMNS_PATH = "models/symptom_columns.pkl"
-SYMPTOM_COLUMNS = "1E_Vu_Dw5lBLhSqsfbdP2xqaVH88A68nd"
-if not os.path.exists("models"):
-    os.makedirs("models")
-# if not os.path.exists(COLUMNS_PATH):
-#     gdown.download(f"https://drive.google.com/uc?id={SYMPTOM_COLUMNS}", COLUMNS_PATH, quiet=False) 
-# /(URL, params={'id': SYMPTOM_COLUMNS}, stream=True)
-
-if not os.path.exists(COLUMNS_PATH):
-    URL = "https://drive.google.com/uc?export=download"
-    session = requests.Session()
-    response = session.get(URL, params={'id': SYMPTOM_COLUMNS}, stream=True)
-
-    with open(COLUMNS_PATH, "rb") as f:
-        SYMPTOM_COLUMNS = joblib.load(f)
+SYMPTOM_COLUMNS = joblib.load("./models/symptom_columns.pkl")
 
 def map_symptoms_groq(user_input):
     try:
@@ -64,3 +46,9 @@ def map_symptoms_groq(user_input):
 
 def map_symptoms_local():
     pass
+
+if __name__ == "__main__":
+    test_input = "I feel a tight pressure in my chest, trouble sleeping, and dizziness when I stand up."
+
+    result = map_symptoms_groq(test_input)
+    print("Matched Symptoms:", result)

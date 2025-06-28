@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from src.utils.symptom_mapper import URL, map_symptoms_groq
+from src.utils.symptom_mapper import map_symptoms_groq
 import joblib
 import numpy as np
 from src.exception import CustomException
@@ -7,14 +7,12 @@ import sys
 import os
 import gdown
 import pickle
-import requests
 
 load_dotenv()
 
 RF_MODEL = "1O33vbPu10sDn3tXHviz9XaS0kAnZK4tc"
 SYMPTOM_COLUMNS = "1E_Vu_Dw5lBLhSqsfbdP2xqaVH88A68nd"
 
-os.makedirs("models", exist_ok=True)
 MODEL_PATH = "models/symptom_model.pkl"
 COLUMNS_PATH = "models/symptom_columns.pkl"
 
@@ -22,15 +20,9 @@ def download_model():
     if not os.path.exists("models"):
         os.makedirs("models")
     if not os.path.exists(MODEL_PATH):
-        URL = "https://drive.google.com/uc?export=download"
-        session = requests.Session()
-        response = session.get(URL, params={'id': RF_MODEL}, stream=True)
-        # gdown.download(f"https://drive.google.com/uc?id={RF_MODEL}", MODEL_PATH, quiet=False)
-    if not os.path.exists(COLUMNS_PATH):
-        URL = "https://drive.google.com/uc?export=download"
-        session = requests.Session()
-        response = session.get(URL, params={'id': SYMPTOM_COLUMNS}, stream=True)
-        # gdown.download(f"https://drive.google.com/uc?id={SYMPTOM_COLUMNS}", COLUMNS_PATH, quiet=False)
+        gdown.download(f"https://drive.google.com/uc?id={RF_MODEL}", MODEL_PATH, quiet=False)
+    # if not os.path.exists(COLUMNS_PATH):
+    #     gdown.download(f"https://drive.google.com/uc?id={SYMPTOM_COLUMNS}", COLUMNS_PATH, quiet=False)
 
 def load_model():
     download_model()
