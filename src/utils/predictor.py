@@ -16,16 +16,16 @@ load_dotenv()
 MODEL_PATH = "models/random_forest_disease_prediction_model.pkl"
 COLUMNS_PATH = "models/symptom_columns.pkl"
 
-def download_model():
-    if not os.path.exists("models"):
-        os.makedirs("models")
+# def download_model():
+#     if not os.path.exists("models"):
+#         os.makedirs("models")
     # if not os.path.exists(MODEL_PATH):
     #     gdown.download(f"https://drive.google.com/uc?id={RF_MODEL}", MODEL_PATH, quiet=False)
     # if not os.path.exists(COLUMNS_PATH):
     #     gdown.download(f"https://drive.google.com/uc?id={SYMPTOM_COLUMNS}", COLUMNS_PATH, quiet=False)
 
 def load_model():
-    download_model()
+    # download_model()
     with open(MODEL_PATH, "rb") as f:
         model = pickle.load(f)
     with open(COLUMNS_PATH, "rb") as f:
