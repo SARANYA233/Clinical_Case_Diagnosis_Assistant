@@ -11,7 +11,7 @@ load_dotenv()
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 MODEL = ChatGroq(model="Gemma2-9b-It", groq_api_key=GROQ_API_KEY)
-SYMPTOM_COLUMNS = joblib.load("./Clinical_Case_Diagnosis_Assistant/src/utils/models/symptom_columns.pkl")
+SYMPTOM_COLUMNS = joblib.load("./models/symptom_columns.pkl")
 
 def map_symptoms_groq(user_input):
     try:
