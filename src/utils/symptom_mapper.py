@@ -12,8 +12,8 @@ load_dotenv()
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 MODEL = ChatGroq(model="Gemma2-9b-It", groq_api_key=GROQ_API_KEY)
-SYMPTOM_COLUMNS = pickle.load("./models/symptom_columns.pkl")
-
+with open("./models/symptom_columns.pkl", "rb") as f:
+    SYMPTOM_COLUMNS = pickle.load(f)
 def map_symptoms_groq(user_input):
     try:
         parser = StrOutputParser()
