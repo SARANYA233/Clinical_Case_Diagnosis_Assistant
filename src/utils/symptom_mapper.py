@@ -7,6 +7,7 @@ import joblib
 from src.exception import CustomException
 import sys
 import pickle
+import gdown
 
 load_dotenv()
 
@@ -14,6 +15,10 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 MODEL = ChatGroq(model="Gemma2-9b-It", groq_api_key=GROQ_API_KEY)
 # SYMPTOM_COLUMNS = joblib.load("D:/PROJECTS/Clinical_Case_Diagnosis_Assistant/models/symptom_columns.pkl")
 COLUMNS_PATH = "models/symptom_columns.pkl"
+SYMPTOM_COLUMNS = "1E_Vu_Dw5lBLhSqsfbdP2xqaVH88A68nd"
+if not os.path.exists(COLUMNS_PATH):
+    gdown.download(f"https://drive.google.com/uc?id={SYMPTOM_COLUMNS}", COLUMNS_PATH, quiet=False)
+
 with open(COLUMNS_PATH, "rb") as f:
     SYMPTOM_COLUMNS = pickle.load(f)
 
