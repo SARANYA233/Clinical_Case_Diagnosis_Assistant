@@ -13,6 +13,7 @@ load_dotenv()
 RF_MODEL = "1O33vbPu10sDn3tXHviz9XaS0kAnZK4tc"
 SYMPTOM_COLUMNS = "1E_Vu_Dw5lBLhSqsfbdP2xqaVH88A68nd"
 
+os.makedirs("models", exist_ok=True)
 MODEL_PATH = "models/symptom_model.pkl"
 COLUMNS_PATH = "models/symptom_columns.pkl"
 
