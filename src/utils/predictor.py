@@ -30,7 +30,9 @@ def load_model():
     st.write(os.path.exists(MODEL_PATH))
     st.write("Loading model ...")
     with open(MODEL_PATH, "rb") as f:
+        st.write("Reading model file...")
         model = joblib.load(f)
+        st.write("Model loaded ✅")
     st.write("Loding columns ...")
     with open(COLUMNS_PATH, "rb") as f:
         columns = joblib.load(f)
