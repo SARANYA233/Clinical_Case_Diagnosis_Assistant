@@ -8,6 +8,7 @@ import os
 import gdown
 import pickle
 import streamlit as st
+import gzip
 load_dotenv()
 
 # RF_MODEL = "1O33vbPu10sDn3tXHviz9XaS0kAnZK4tc"
@@ -29,10 +30,14 @@ def load_model():
     st.write("Checking model path...")
     st.write(os.path.exists(MODEL_PATH))
     st.write("Loading model ...")
-    with open(MODEL_PATH, "rb") as f:
+    with gzip.open(MODEL_PATH, 'rb') as f:
         st.write("Reading model file...")
         model = pickle.load(f)
         st.write("Model loaded ✅")
+    # with open(MODEL_PATH, "rb") as f:
+    #     st.write("Reading model file...")
+    #     model = pickle.load(f)
+    #     st.write("Model loaded ✅"
     st.write("Loding columns ...")
     with open(COLUMNS_PATH, "rb") as f:
         columns = pickle.load(f)
