@@ -33,17 +33,21 @@ def map_symptoms_groq(user_input):
                 ("user", User_prompt)
             ]
         )
+        st.write("Creating chain with prompt and model...")
+        st.write(MODEL)
 
         chain = prompt | MODEL | parser
         response = chain.invoke({
             "user_input": user_input,
             "SYMPTOM_COLUMNS": SYMPTOM_COLUMNS
         })
-
+        st.write("Response from model:", response)
         extracted_symptoms = response.split(',')
         result = [symptom.replace('\n', '').strip() for symptom in extracted_symptoms if symptom.replace('\n', '').strip() in SYMPTOM_COLUMNS]
         return result
     except Exception as e:
+        st.write("An error occurred while mapping symptoms.")
+        st.write(f"Error: {str(e)}")
         st.error(f"Error during prediction: {str(e)}")
         import traceback
         st.code(traceback.format_exc())

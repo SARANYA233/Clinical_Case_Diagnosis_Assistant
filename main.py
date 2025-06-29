@@ -12,6 +12,7 @@ user_input = st.text_area("Describe your symptoms in your own words:")
 # 🔘 Prediction button
 if st.button("Predict Disease"):
     with st.spinner("Analyzing symptoms..."):
+        st.write("Predicting in progress... ⏳")
         Disease, Symptoms = predict_disease(user_input)
 
     if not Disease:

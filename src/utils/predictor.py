@@ -26,16 +26,19 @@ COLUMNS_PATH = "./models/symptom_columns.pkl"
 
 def load_model():
     # download_model()
+    st.write("Loding model ...")
     with open(MODEL_PATH, "rb") as f:
         model = joblib.load(f)
+    st.write("Loding columns ...")
     with open(COLUMNS_PATH, "rb") as f:
         columns = joblib.load(f)
     return model, columns
 
 def predict_disease(user_input, top_k = 3):
     try:
-
+        st.write("Loading model and columns...")
         model, columns = load_model()
+        st.write("Mapping symptoms...")
         symptoms = map_symptoms_groq(user_input)
 
         input_vector = [1 if symptom in symptoms else 0 for symptom in columns]
@@ -48,6 +51,8 @@ def predict_disease(user_input, top_k = 3):
         return diseases, symptoms
     
     except Exception as e:
+        st.write("An error occurred while mapping symptoms.")
+        st.write(f"Error: {str(e)}")
         st.error(f"Error during prediction: {str(e)}")
         import traceback
         st.code(traceback.format_exc())
