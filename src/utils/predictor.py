@@ -14,7 +14,8 @@ load_dotenv()
 # RF_MODEL = "1O33vbPu10sDn3tXHviz9XaS0kAnZK4tc"
 # SYMPTOM_COLUMNS = "1E_Vu_Dw5lBLhSqsfbdP2xqaVH88A68nd"
 
-MODEL_PATH = "./models/random_forest_disease_prediction_model.pkl.gz"
+# MODEL_PATH = "./models/random_forest_disease_prediction_model.pkl.gz"
+MODEL_PATH = "./models/Decision_Tree_prediction_model.pkl"
 COLUMNS_PATH = "./models/symptom_columns.pkl"
 
 # def download_model():
@@ -30,14 +31,14 @@ def load_model():
     st.write("Checking model path...")
     st.write(os.path.exists(MODEL_PATH))
     st.write("Loading model ...")
-    with gzip.open(MODEL_PATH, 'rb') as f:
+    # with gzip.open(MODEL_PATH, 'rb') as f:
+    #     st.write("Reading model file...")
+    #     model = pickle.load(f)
+    #     st.write("Model loaded ✅")
+    with open(MODEL_PATH, "rb") as f:
         st.write("Reading model file...")
         model = pickle.load(f)
         st.write("Model loaded ✅")
-    # with open(MODEL_PATH, "rb") as f:
-    #     st.write("Reading model file...")
-    #     model = pickle.load(f)
-    #     st.write("Model loaded ✅"
     st.write("Loding columns ...")
     with open(COLUMNS_PATH, "rb") as f:
         columns = pickle.load(f)
