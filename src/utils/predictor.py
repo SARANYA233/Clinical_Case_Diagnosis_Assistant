@@ -26,7 +26,9 @@ COLUMNS_PATH = "./models/symptom_columns.pkl"
 
 def load_model():
     # download_model()
-    st.write("Loding model ...")
+    st.write("Checking model path...")
+    st.write(os.path.exists(MODEL_PATH))
+    st.write("Loading model ...")
     with open(MODEL_PATH, "rb") as f:
         model = joblib.load(f)
     st.write("Loding columns ...")
