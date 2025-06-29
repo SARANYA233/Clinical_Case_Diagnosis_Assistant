@@ -31,11 +31,11 @@ def load_model():
     st.write("Loading model ...")
     with open(MODEL_PATH, "rb") as f:
         st.write("Reading model file...")
-        model = joblib.load(f)
+        model = pickle.load(f)
         st.write("Model loaded ✅")
     st.write("Loding columns ...")
     with open(COLUMNS_PATH, "rb") as f:
-        columns = joblib.load(f)
+        columns = pickle.load(f)
     return model, columns
 
 def predict_disease(user_input, top_k = 3):
